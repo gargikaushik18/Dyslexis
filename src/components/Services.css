@@ -1,0 +1,148 @@
+.services {
+  padding: 80px 60px;
+  background: linear-gradient(#000,#9770aa, #452249, #21042d);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.title {
+  text-align: center;
+  font-size: 38px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  text-decoration: underline;
+}
+
+/* Container */
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* TEXT GRID */
+.services-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  text-align: center;
+}
+
+.service h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.service p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+/* IMAGES */
+.services-images {
+  position: relative;
+  width: 800px;
+  height: 450px;
+}
+
+.services-images img {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.services-images img:nth-child(1) {
+  left: -200px;
+  top: 0;
+  z-index: 1;
+}
+
+.services-images img:nth-child(2) {
+  left: 220px;
+  top: 50px;
+  z-index: 2;
+}
+
+.services-images img:nth-child(3) {
+  left: 600px;
+  top: 0;
+  z-index: 3;
+}
+
+.services-images img:hover {
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+/* VIDEOS SECTION */
+.services-videos {
+  width: 100%;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.video-title {
+  font-size: 32px;
+  text-decoration: underline;
+  margin-bottom: 40px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.video-grid iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.video-grid iframe:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+  .services-text {
+    grid-template-columns: 1fr;
+  }
+
+  .services-images {
+    position: static;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    height: auto;
+    width: 100%;
+  }
+
+  .services-images img {
+    position: static;
+    width: 120px;
+    height: 160px;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-grid iframe {
+    height: 220px;
+  }
+}

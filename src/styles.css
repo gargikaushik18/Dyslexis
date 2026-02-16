@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #0f0f10;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links span {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+section {
+  min-height: 100vh;
+  padding-top: 100px;
+  scroll-margin-top: 90px;
+  /* space for navbar */
+}
+
+.dummy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  background: #eee;
+}
+

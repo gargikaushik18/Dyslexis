@@ -1,0 +1,187 @@
+/* ================= PAGE ================= */
+
+.page-wrapper {
+    min-height: 100vh;
+    padding: 40px;
+background: linear-gradient(135deg,#000, #1d5d94, #39196d,#000);
+    color: #fff;    font-family: "Segoe UI", sans-serif;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* ================= TWO COLUMN ================= */
+
+.two-column-layout {
+    display: flex;
+    gap: 10px;
+}
+
+/* ================= LEFT COLUMN (UNCHANGED STYLE) ================= */
+
+.quiz-column {
+    flex: 1;
+    background:linear-gradient(#baccfb, #411c8d);  
+      padding: 10px;
+      /* background: white; */
+    border-radius: 20px solid black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.quiz-column h2{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+
+}
+
+.question-card {
+    background: #162c42;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.question-card p {
+    font-weight: 600;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.option-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 2px solid #e2e8f0;
+    background: rgb(244, 242, 242);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option-btn:hover {
+    background: #dbeafe;
+}
+
+.option-btn.active {
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #0b0b0b;
+    border-radius: 10px;
+}
+
+/* ================= RIGHT COLUMN UPDATED ================= */
+
+.image-column {
+    flex: 1;
+    background:-moz-linear-gradient(#5d253e,#2b125c);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-heading {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #090909;
+}
+
+.upload-box {
+    width: 100%;
+    max-width: 400px;
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.choose-btn {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.choose-btn:hover {
+    background: #1d4ed8;
+}
+
+.predict-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.predict-btn:hover {
+    background: #15803d;
+}
+
+.result-container {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 600;
+    color: #334155;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+    .two-column-layout {
+        flex-direction: column;
+    }
+}
