@@ -56,9 +56,8 @@ const Prediction = () => {
                 {options.map((opt, index) => (
                   <button
                     key={index}
-                    className={`option-btn ${
-                      answers[i] === opt.value ? "active" : ""
-                    }`}
+                    className={`option-btn ${answers[i] === opt.value ? "active" : ""
+                      }`}
                     onClick={() => handleChange(i, opt.value)}
                   >
                     {opt.label}
@@ -90,18 +89,30 @@ const Prediction = () => {
           <div className="upload-box">
             <input type="file" id="fileUpload" hidden />
 
-            <label htmlFor="fileUpload" className="choose-btn">
+            {/* <label htmlFor="fileUpload" className="choose-btn">
               Choose File
-            </label>
+            </label> */}
 
-            <button className="predict-btn">
+            {/* <button className="predict-btn">
+              Predict
+            </button> */}
+
+            <button
+              className="predict-btn"
+              onClick={() =>
+                window.open(
+                  "https://app.roboflow.com/workflows/mobile/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3b3JrZmxvd0lkIjoiTlMxcHBncXFRQm9jZUR5YlN3TjAiLCJ3b3Jrc3BhY2VJZCI6IjcyZlpDZFNGeWVRSXB2OGYxanNvVk0xUkM1MDIiLCJ1c2VySWQiOiI3MmZaQ2RTRnllUUlwdjhmMWpzb1ZNMVJDNTAyIiwiaWF0IjoxNzU3Njk1OTEyfQ.wdWFSQMSH0es6h8bW04543mz8lDlXrYZXsLkoz2iyto",
+                  "_blank"
+                )
+              }
+            >
               Predict
             </button>
-          </div>
 
-          <div className="result-container">
-            Result will appear here
           </div>
+          {/* <div className="result-container">
+            Result will appear here
+          </div> */}
 
         </div>
 

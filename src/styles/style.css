@@ -5,6 +5,9 @@
 #home {
   padding-top: 95px;
 }
+#bp-web-widget {
+  display: none !important;
+}
 
 section {
   scroll-margin-top: 110px;

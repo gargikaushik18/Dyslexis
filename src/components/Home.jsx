@@ -6,6 +6,12 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
 
+  const openChat = () => {
+    if (window.botpress) {
+      window.botpress.open();
+    }
+  };
+
   return (
     <div
       className="hero-section"
@@ -31,9 +37,7 @@ const Home = () => {
         <img src={image1} className="quote-img" alt="Quote" />
       </div>
 
-      <div className="chatbot-icon">
-        <img src={chatbot} alt="Chatbot" />
-      </div>
+      
     </div>
   );
 };
