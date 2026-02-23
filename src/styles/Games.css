@@ -20,17 +20,33 @@
 }
 
 .game-card {
-    background: #111;
-    height: 200px;
+    background: transparent;
+    /* remove black background */
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: bold;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    transition: 0.3s ease;
     cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.game-card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* 🔥 Game Title Above Image */
+.game-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* 🔥 Game Image Box */
+.game-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 .game-card:hover {
@@ -56,4 +72,12 @@
 .home-btn:hover {
     transform: scale(1.05);
     background: #f3f3f3;
+}
+.back-btn {
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 30px;
 }
