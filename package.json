@@ -11,6 +11,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "peer": "^1.0.2",
