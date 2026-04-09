@@ -1,5 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
+/* AUTH */
+import Login from "./components/Login";
+import Register from "./components/Register";
+
+/* COMPONENTS */
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -8,7 +13,6 @@ import Therapist from "./components/Therapist";
 import Products from "./components/Products";
 import TherapistCall from "./components/TherapyCall";
 import Prediction from "./components/Prediction";
-import Contact from "./components/FAQ";
 import Games from "./components/Games";
 import GameScreen from "./components/GameScreen";
 
@@ -21,37 +25,17 @@ function MainPage() {
     <>
       <Navbar />
 
-      <section id="home">
-        <Home />
-      </section>
+      <section id="home"><Home /></section>
+      <section id="about"><About /></section>
+      <section id="services"><Services /></section>
+      <section id="prediction"><Prediction /></section>
+      <section id="therapist"><Therapist /></section>
+      <section id="therapycall"><TherapistCall /></section>
+      <section id="products"><Products /></section>
 
-      <section id="about">
-        <About />
-      </section>
-
-      <section id="services">
-        <Services />
-      </section>
-
-      <section id="prediction">
-        <Prediction />
-      </section>
-
-      <section id="therapist">
-        <Therapist />
-      </section>
-
-      <section id="therapycall">
-        <TherapistCall />
-      </section>
-
-      <section id="products">
-        <Products />
-      </section>
-
+      {/* ⚠️ YOUR FAQ + CONTACT (UNCHANGED) */}
       <section id="contact" className="contact-section">
-
-  {/* FAQ SECTION */}
+        {/* FAQ SECTION */}
   <div className="faq-section">
     <h1 className="faq-title">FAQs</h1>
 
@@ -136,8 +120,7 @@ function MainPage() {
   </div>
 </div>
 
-</section>
-
+      </section>
     </>
   );
 }
@@ -145,11 +128,33 @@ function MainPage() {
 /* ================= ROUTES ================= */
 
 function App() {
+  const user = localStorage.getItem("user");
+
   return (
-    <Routes>
-      <Route path="/" element={<MainPage />} />
+   <Routes>
+
+      {/* ✅ LOGIN FIRST */}
+      <Route 
+        path="/" 
+        element={!user ? <Login /> : <Navigate to="/home" />} 
+      />
+
+      {/* REGISTER */}
+      <Route path="/register" element={<Register />} />
+
+      {/* MAIN WEBSITE */}
+      <Route 
+        path="/home" 
+        element={user ? <MainPage /> : <Navigate to="/" />} 
+      />
+
+      {/* GAMES */}
       <Route path="/games" element={<Games />} />
       <Route path="/games/:id" element={<GameScreen />} />
+
+      {/* FALLBACK */}
+      <Route path="*" element={<Navigate to="/" />} />
+
     </Routes>
   );
 }

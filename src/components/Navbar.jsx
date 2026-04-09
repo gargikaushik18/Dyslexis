@@ -1,11 +1,22 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 const Navbar = () => {
+    const navigate = useNavigate();
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  // ✅ LOGOUT FUNCTION
+  const handleLogout = () => {
+  localStorage.removeItem("user");
 
+  // ✅ FORCE FULL REDIRECT
+  window.location.href = "/";
+};
   return (
     <div className="navbar">
       <div className="logo">Dyslexis</div>
@@ -19,6 +30,10 @@ const Navbar = () => {
          <button onClick={() => scrollToSection("therapycall")}>TherapistCall</button>
         <button onClick={() => scrollToSection("products")}>Products</button>
         <button onClick={() => scrollToSection("contact")}>FAQs</button>
+         {/* ✅ LOGOUT BUTTON */}
+        <button onClick={handleLogout} style={{ color: "red" }}>
+          Logout
+        </button>
       </div>
     </div>
   );
