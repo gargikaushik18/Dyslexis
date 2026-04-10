@@ -27,7 +27,7 @@ function GameScreen() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/save-score", {
+      const res = await axios.post("https://dyslexis.onrender.com/save-score", {
         userId: user._id,
         score: Number(score),
         game: game.title, // ✅ game name sent
