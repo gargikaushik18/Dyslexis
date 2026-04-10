@@ -3,7 +3,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+require("dotenv").config();
 const app = express();
 const server = http.createServer(app);
 
@@ -23,9 +23,7 @@ io.on("connection", (socket) => {
 /* ================= DATABASE ================= */
 
 mongoose
-  .connect(
-    "mongodb://gargikaushik1711_db_user:Gargi2004@ac-rvfx1rf-shard-00-00.gqywtpj.mongodb.net:27017,ac-rvfx1rf-shard-00-01.gqywtpj.mongodb.net:27017,ac-rvfx1rf-shard-00-02.gqywtpj.mongodb.net:27017/dyslexis?ssl=true&replicaSet=atlas-ogom8q-shard-0&authSource=admin&retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected ✅"))
   .catch((err) => console.log("Mongo Error ❌:", err.message));
 
