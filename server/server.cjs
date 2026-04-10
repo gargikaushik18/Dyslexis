@@ -94,11 +94,7 @@ app.post("/register", async (req, res) => {
       name,
       email,
       password,
-      scores: [{
-    game: String,
-    score: Number,
-    date: String,
-  },], // ✅ important
+      scores: [], // ✅ fixed
     });
 
     await newUser.save();
