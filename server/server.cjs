@@ -18,27 +18,6 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
-
-  socket.on("join-room", (roomId) => {
-    socket.join(roomId);
-    socket.to(roomId).emit("ready");
-  });
-
-  socket.on("offer", (offer, roomId) => {
-    socket.to(roomId).emit("offer", offer);
-  });
-
-  socket.on("answer", (answer, roomId) => {
-    socket.to(roomId).emit("answer", answer);
-  });
-
-  socket.on("ice-candidate", (candidate, roomId) => {
-    socket.to(roomId).emit("ice-candidate", candidate);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("User disconnected");
-  });
 });
 
 /* ================= DATABASE ================= */
@@ -56,7 +35,48 @@ const User = mongoose.model("User", {
   name: String,
   email: String,
   password: String,
-  scores: [Number],
+
+  // ✅ FIXED SCHEMA
+  scores: [
+    {
+      game: String,
+      score: Number,
+      date: String,
+    },
+  ],
+});
+
+/* ================= SAVE SCORE ================= */
+
+app.post("/save-score", async (req, res) => {
+  try {
+    console.log("SAVE SCORE BODY:", req.body);
+
+    const { userId, score, game } = req.body;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.send({ success: false, message: "User not found" });
+    }
+
+    const newScore = {
+      game: game,
+      score: score,
+      date: new Date().toLocaleString(),
+    };
+
+    user.scores.push(newScore);
+
+    await user.save();
+
+    console.log("Saved:", newScore);
+
+    res.send({ success: true, scores: user.scores });
+  } catch (err) {
+    console.log("Score Error:", err);
+    res.send({ success: false });
+  }
 });
 
 /* ================= AUTH ROUTES ================= */
@@ -64,9 +84,6 @@ const User = mongoose.model("User", {
 // REGISTER
 app.post("/register", async (req, res) => {
   try {
-    console.log("REGISTER HIT ✅");
-    console.log("Data:", req.body);
-
     const { name, email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
@@ -79,16 +96,18 @@ app.post("/register", async (req, res) => {
       name,
       email,
       password,
-      scores: [],
+      scores: [{
+    game: String,
+    score: Number,
+    date: String,
+  },], // ✅ important
     });
 
     await newUser.save();
 
-    console.log("User Saved ✅");
-
     res.send({ success: true });
   } catch (err) {
-    console.log("Register Error:", err);
+    console.log(err);
     res.send({ success: false });
   }
 });
@@ -96,9 +115,6 @@ app.post("/register", async (req, res) => {
 // LOGIN
 app.post("/login", async (req, res) => {
   try {
-    console.log("LOGIN HIT ✅");
-    console.log("Data:", req.body);
-
     const { email, password } = req.body;
 
     const user = await User.findOne({ email, password });
@@ -109,7 +125,7 @@ app.post("/login", async (req, res) => {
       res.send({ success: false });
     }
   } catch (err) {
-    console.log("Login Error:", err);
+    console.log(err);
     res.send({ success: false });
   }
 });
